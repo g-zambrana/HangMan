@@ -1,17 +1,32 @@
-const POSSIBLE_WORDS = ['hippo', 'toyota', 'chess','moose', 'wheel', 'antilope', 'synonym', 'apple', 'spice', 'toes'];
+const POSSIBLE_WORDS = ['hippo', 'toyota', 'chess','moose', 'wheel', 'antilope', 'synonym', 'apple', 'spice', 'toes', 'switzerland', 'forest'];
+var word = "";
+var guesses = "";
 
 let newGame = function(){
     var randomIndex = parseInt(Math.random()*POSSIBLE_WORDS.length);
-    var word = POSSIBLE_WORDS[randomIndex];
-    console.log('Chosen word: ' + word)
+    word = POSSIBLE_WORDS[randomIndex];
+    console.log('Chosen word: ' + word);
+    updatePage();
+}
 
-
+let updatePage= function(){
     let clueString = "";
     for (let i = 0; i < word.length; i++){
-        clueString += "_ ";
+        var currentLetter = word.charAt(i);
+        if (guesses.indexOf(currentLetter) >= 0){
+            clueString += currentLetter + " ";
+        } else {
+            clueString += "_ ";
+        }
     }
-
 
     let clue = document.getElementById("clue");
     clue.textContent = clueString;
+}
+
+let guessLetter = function(){
+    let input = document.getElementById("guess");
+    let letter = input.value;
+    guesses += letter;
+    updatePage();
 }
