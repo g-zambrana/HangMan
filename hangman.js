@@ -3,15 +3,16 @@ var word = "";
 var guesses = "";
 
 let newGame = function(){
-    var randomIndex = parseInt(Math.random()*POSSIBLE_WORDS.length);
+    let randomIndex = parseInt(Math.random()*POSSIBLE_WORDS.length);
     word = POSSIBLE_WORDS[randomIndex];
     console.log('Chosen word: ' + word);
+    guesses = "";
     updatePage();
 }
 
 let updatePage= function(){
     let clueString = "";
-    for (let i = 0; i < word.length; i++){
+    for (let i = 0; i<word.length; i++){
         var currentLetter = word.charAt(i);
         if (guesses.indexOf(currentLetter) >= 0){
             clueString += currentLetter + " ";
@@ -22,6 +23,9 @@ let updatePage= function(){
 
     let clue = document.getElementById("clue");
     clue.textContent = clueString;
+
+    let guessArea = document.getElementById("guesses");
+    guessArea.textContent = "Guesses: "+ guesses;
 }
 
 let guessLetter = function(){
