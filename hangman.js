@@ -29,6 +29,9 @@ let updatePage= function(){
 
     let guessArea = document.getElementById("guesses");
     guessArea.textContent = "Guesses: "+ guesses;
+
+    let image = document.getElementById("hangmanpic");
+    image.src = `images/hangman${guessCount}.gif`;
 }
 
 let guessLetter = function(){
