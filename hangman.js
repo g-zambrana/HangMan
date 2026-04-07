@@ -44,9 +44,9 @@ let updatePage= function(){
     if(word === ""){
         guessArea.textContent = "Press New Game to start.";
     } else if (gameOver && checkWord()){
-        guessArea.textContent = "Guesses: " + guesses + "YOU WON!!!";
+        guessArea.textContent = "YOU WON!!!";
     } else if (gameOver && guessCount === 0){
-        guessArea.textContent = "Guesses: " + guesses + "YOU LOST! :( , the word was " + word;
+        guessArea.textContent = "YOU LOST!!! The word was " + word;
     } else {
         guessArea.textContent = "Guesses: " + guesses;
     }
@@ -71,10 +71,27 @@ let guessLetter = function(){
         return;
     }
 
+    if(guesses.indexOf(letter) >= 0){
+        document.getElementById("guesses").textContent = "The letter " + letter.toUpperCase() + " was already guesses."
+        input.value = "";
+        return;
+    }
+
+    
+
     if(word.indexOf(letter) < 0){
         guessCount--;
     }
     guesses += letter;
+
+    if (checkWord()){
+        gameOver = true;
+    }
+
+    if(guessCount === 0 ){
+        gameOver = true;
+    }
+
     input.value= "";
     updatePage();
 }
