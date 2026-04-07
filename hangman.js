@@ -13,7 +13,7 @@ let newGame = function(){
     guesses = "";
     gameOver = false;
     updatePage();
-}
+};
 
 let checkWord = function(){
     for (let i = 0; i < word.length; i++){
@@ -46,7 +46,7 @@ let updatePage= function(){
     } else if (gameOver && checkWord()){
         guessArea.textContent = "YOU WON!!!";
     } else if (gameOver && guessCount === 0){
-        guessArea.textContent = "YOU LOST!!! The word was " + word;
+        guessArea.textContent = "YOU LOST!!! The word was " + "\"" + word + "\"";
     } else {
         guessArea.textContent = "Guesses: " + guesses;
     }
@@ -72,7 +72,7 @@ let guessLetter = function(){
     }
 
     if(guesses.indexOf(letter) >= 0){
-        document.getElementById("guesses").textContent = "The letter " + letter.toUpperCase() + " was already guesses."
+        document.getElementById("guesses").textContent = "The letter \"" + letter.toUpperCase() + "\" was already guessed."
         input.value = "";
         return;
     }
