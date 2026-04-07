@@ -1,4 +1,4 @@
-const POSSIBLE_WORDS = ['hippo', 'toyota', 'chess','moose', 'wheel', 'antilope', 'synonym', 'apple', 'spice', 'toes', 'switzerland', 'forest'];
+const POSSIBLE_WORDS = ['hippo', 'toyota', 'chess','moose', 'wheel', 'antelope', 'synonym', 'apple', 'spice', 'toes', 'switzerland', 'forest'];
 var word = "";
 var guesses = "";
 var guessCount;
