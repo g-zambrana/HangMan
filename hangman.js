@@ -28,7 +28,7 @@ let checkWord = function(){
 let updatePage= function(){
     let clueString = "";
     for (let i = 0; i<word.length; i++){
-        var currentLetter = word.charAt(i);
+        let currentLetter = word.charAt(i);
         if (guesses.indexOf(currentLetter) >= 0){
             clueString += currentLetter + " ";
         } else {
@@ -40,7 +40,16 @@ let updatePage= function(){
     clue.textContent = clueString;
 
     let guessArea = document.getElementById("guesses");
-    guessArea.textContent = "Guesses: "+ guesses;
+
+    if(word === ""){
+        guessArea.textContent = "Press New Game to start.";
+    } else if (gameOver && checkWord()){
+        guessArea.textContent = "Guesses: " + guesses + "YOU WON!!!";
+    } else if (gameOver && guessCount === 0){
+        guessArea.textContent = "Guesses: " + guesses + "YOU LOST! :( , the word was " + word;
+    } else {
+        guessArea.textContent = "Guesses: " + guesses;
+    }
 
     let image = document.getElementById("hangmanpic");
     image.src = `images/hangman${guessCount}.gif`;
