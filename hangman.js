@@ -2,6 +2,7 @@ const POSSIBLE_WORDS = ['hippo', 'toyota', 'chess','moose', 'wheel', 'antilope',
 var word = "";
 var guesses = "";
 var guessCount;
+var gameOver = false;
 const MAX_GUESSES = 6;
 
 let newGame = function(){
@@ -10,8 +11,19 @@ let newGame = function(){
     word = POSSIBLE_WORDS[randomIndex];
     console.log('Chosen word: ' + word);
     guesses = "";
+    gameOver = false;
     updatePage();
 }
+
+let checkWord = function(){
+    for (let i = 0; i < word.length; i++){
+        let currentLetter = word.charAt(i);
+        if (guesses.indexOf(currentLetter) < 0){
+            return false;
+        }
+    }
+    return true;
+};
 
 let updatePage= function(){
     let clueString = "";
