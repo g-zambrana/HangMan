@@ -66,7 +66,10 @@ let guessLetter = function(){
         return;
     }
 
-    
+    if (gameOver){
+        input.value = "";
+        return;
+    }
 
     if(word.indexOf(letter) < 0){
         guessCount--;
